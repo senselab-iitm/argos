@@ -1,0 +1,163 @@
+<scene version="2.1.0">
+
+<!-- Defaults, these can be set via the command line: -Darg=value -->
+
+
+<!-- Camera and Rendering Parameters -->
+
+	<integrator type="path" id="elm__0" name="elm__0">
+		<integer name="max_depth" value="12"/>
+	</integrator>
+
+<!-- Materials -->
+
+	<bsdf type="twosided" id="mat-wood" name="mat-wood">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.295692 0.135372 0.044600" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-metal.004" name="mat-metal.004">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.027208 0.025149 0.024539" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-marble" name="mat-marble">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.800000 0.413645 0.096370" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-metal.005" name="mat-metal.005">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.800000 0.800000 0.800000" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-metal.003" name="mat-metal.003">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.800000 0.800000 0.800000" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-metal" name="mat-metal">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.800000 0.800000 0.800000" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-metal.001" name="mat-metal.001">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.800000 0.800000 0.800000" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-metal.002" name="mat-metal.002">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.800000 0.800000 0.800000" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-wood.001" name="mat-wood.001">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.800000 0.800000 0.800000" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-wood.002" name="mat-wood.002">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.800000 0.800000 0.800000" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-metal.006" name="mat-metal.006">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.800000 0.800000 0.800000" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-metal.007" name="mat-metal.007">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="1.000000 1.000000 1.000000" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-metal.008" name="mat-metal.008">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.800000 0.800000 0.800000" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<bsdf type="twosided" id="mat-concrete" name="mat-concrete">
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="0.800000 0.800000 0.800000" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+
+<!-- Emitters -->
+
+
+<!-- Shapes -->
+
+	<shape type="ply" id="elm__2" name="elm__2">
+		<string name="filename" value="meshes/geometry_0.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-wood" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__4" name="elm__4">
+		<string name="filename" value="meshes/geometry_1.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-metal.004" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__6" name="elm__6">
+		<string name="filename" value="meshes/geometry_2.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-marble" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__8" name="elm__8">
+		<string name="filename" value="meshes/geometry_3.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-metal.005" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__10" name="elm__10">
+		<string name="filename" value="meshes/geometry_4.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-metal.003" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__12" name="elm__12">
+		<string name="filename" value="meshes/geometry_5.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-metal" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__14" name="elm__14">
+		<string name="filename" value="meshes/geometry_6.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-metal.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__16" name="elm__16">
+		<string name="filename" value="meshes/geometry_7.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-metal.002" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__18" name="elm__18">
+		<string name="filename" value="meshes/geometry_8.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-wood.001" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__20" name="elm__20">
+		<string name="filename" value="meshes/geometry_9.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-wood.002" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__22" name="elm__22">
+		<string name="filename" value="meshes/geometry_10.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-metal.006" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__24" name="elm__24">
+		<string name="filename" value="meshes/geometry_11.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-metal.007" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__26" name="elm__26">
+		<string name="filename" value="meshes/geometry_12.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-metal.008" name="bsdf"/>
+	</shape>
+	<shape type="ply" id="elm__28" name="elm__28">
+		<string name="filename" value="meshes/geometry_14.ply"/>
+		<boolean name="face_normals" value="true"/>
+		<ref id="mat-concrete" name="bsdf"/>
+	</shape>
+
+<!-- Volumes -->
+
+</scene>
