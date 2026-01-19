@@ -8,3 +8,14 @@ This artefact demonstrates the anchor selection for a material-aware scalable di
 
 <h2>Installation</h2>
 Kindly install the required packages from requirements.txt. Our current version works with Sionna-RT 1.0.1, as is specified and will not work with other versions.
+Inside the project root, create a virtual environment
+`python3 -m venv .venv`
+Enable this virtual environment
+`source .venv/bin/activate`
+In this virtual environment install necessary packages
+`pip3 install -r requirements.txt`
+Then make the virtual environment accessible to jupyter lab
+`ipykernel install --user name=.venv`
+From this virtual environment, start jupyter lab
+`jupyter lab`
+Select the .venv kernel in jupyter lab by clicking the `kernel->change kernel menu`
