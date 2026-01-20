@@ -1,15 +1,18 @@
 """
-Compute and cache FMD maps using Sionna RT + real CIR data.
-Supports partial Rx updates via a bitmask.
+FMD Cache Handler
+Authors: Arko Datta and Ayon Chakraborty, SeNSE Lab, IIT Madras
 
-Cache is a json with the format:
-{
-  "(tx_x, tx_y, tx_z)": {
-    "(rx_x, rx_y, rx_z)": { "fmd": ..., "rssi": ... },
-    ...
-  },
-  ...
-}
+This module is responsible for generating a ∆FMD cache of a scene. 
+The module consists of the class FMDCalculator, which is responsible for handling the
+operations for the same. It takes scene parameters, such as length and breadth, as input. 
+Additionally, users define the granularity of the scene’s ∆FMD map. 
+This is done by treating the scene as a set of small cells, each with a pseudo-receiver,
+with tunable spacing between them. The module also requires the 3D model and the CIR data paths to initiate. 
+To calculate the ∆FMD for a particular transmitter, the update_fmd function is called, 
+along with an optional parameter to provide a bitmask, indicating selective locations to update the ∆FMD,
+facilitating faster updates in case of incremental scene changes. 
+The ∆FMD cache can be exported to and imported from .json files using the export_cache_to_json
+and import_cache_from_json functions, respectively.
 """
 
 import time, gc, json
@@ -215,9 +218,6 @@ class FMDCalculator:
         t0 = time.time()
         tx_tuple, tx_key = tuple(map(float, tx_coords)), str(tuple(map(float, tx_coords)))
 
-        # -------------------------------
-        # Select receivers
-        # -------------------------------
         t_sel = time.time()
         if bitmask is None:
             sel_rx_positions = self.rx_positions
@@ -267,7 +267,7 @@ class FMDCalculator:
         )
         timers["real_data_processing"] = time.time() - t3
 
-        # Sim → dBm
+        # Sim to dBm
         t4 = time.time()
         roi_len = mu_real.shape[1] if mu_real.size > 0 else a_comb.shape[1]
         sim_cut = np.array([row[:roi_len] for row in a_comb])
@@ -307,7 +307,6 @@ class FMDCalculator:
         return fmd_vals, timers
 
     def get_fmd_map(self, tx_coords, unit="meters"):
-        """Return FMD values as a 2D numpy array [ny, nx]."""
         tx_key = str(tuple(map(float, tx_coords)))
         if tx_key not in self._cache:
             raise ValueError("Tx not found in cache, run update_fmd first")
@@ -338,9 +337,6 @@ class FMDCalculator:
                 self._cache[tx_key] = {}
             self._cache[tx_key].update(rx_dict)
 
-# -------------------------------
-# Example usage
-# -------------------------------
 if __name__ == "__main__":
     np.random.seed(0)
 

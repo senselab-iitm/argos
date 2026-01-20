@@ -1,3 +1,17 @@
+"""
+Argos Optimizer
+Authors: Arko Datta and Ayon Chakraborty, SeNSE Lab, IIT Madras
+
+This helper module takes in 
+(i) the scene and its ∆FMD cache, 
+(ii) candidate anchor positions, 
+(iii) the anchor budget, and 
+(iv) a prior location map of the object(s) to localize, 
+and returns the anchor subset fitting the budget, which reduces the localization error. 
+The module runs the optimization algorithm, incrementally selecting anchors to minimise
+the mean ∆FMD weighted by the prior and the geometric dilution of precision (GDoP). 
+It returns the recommended anchor positions along with the map of localization errors.
+"""
 import numpy as np
 class ArgosOptimization:
     def __init__(self,

@@ -1,3 +1,10 @@
+"""
+Miscellaneous Utilities
+Authors: Arko Datta and Ayon Chakraborty, SeNSE Lab, IIT Madras
+
+This module has miscellaneous utilities for rendering the outputs of the user-facing applications
+"""
+
 import numpy as np
 from sionna.rt import RadioMap
 import mitsuba as mi
