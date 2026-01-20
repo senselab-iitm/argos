@@ -15,7 +15,7 @@ You can also view ∆FMD for each transmitter after it has been computed<br>
 
 <li>argos_optimize.ipynb: helps the user to perform anchor selection given the ∆FMD cache. It takes in a prior trajectory probability map of mobile nodes and shows the anchors to be deployed in order to achieve superior quality localization given a budget.<br>
 
-![fmd_map](../readme_assets/single_anchor_fmd.gif)
+![fmd_map](../readme_assets/anchors_selected.gif)
 <br>
 
 </li><br>
