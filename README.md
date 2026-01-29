@@ -10,7 +10,7 @@ This artefact demonstrates the anchor selection for a material-aware scalable di
 </ol>
 
 <h2>Installation</h2>
-Kindly install the required packages from requirements.txt. Our current version works with Sionna-RT 1.0.1, as is specified and will not work with other versions.<br>
+Kindly install the required packages from requirements.txt. We have developed and tested this code in Python 3.10, using that is recommended for reproducibility. Our current version works with Sionna-RT 1.0.1, as is specified and will not work with other versions.<br>
 1. Inside the project root, create a virtual environment<br>
 
 `python3 -m venv .venv` <br>
