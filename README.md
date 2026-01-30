@@ -11,7 +11,7 @@ This artefact demonstrates the anchor selection for a material-aware scalable di
 
 <h2>Installation and setup</h2>
 
-The code has been developed and tested with **Python 3.10** on **Ubuntu 22.04 LTS**; using the same setup is recommended for reproducibility. The current implementation is compatible **only with Sionna-RT v1.0.1** and is not expected to work with other versions. Installation instructions for Sionna-RT v1.0.1 are available in the [official documentation](https://github.com/NVlabs/sionna/blob/9ca7cc75a6431a8d05c4059f3b137ba52a06ce5b/README.md), which is recommended to follow in order to avoid dependency issues.
+The code has been developed and tested with **Python 3.10** on **Ubuntu 22.04 LTS**; using the same setup is recommended for reproducibility. The current implementation is compatible **only with Sionna-RT v1.0.1** and is not expected to work with other versions. Installation instructions for Sionna-RT v1.0.1 are available in the [official documentation](https://github.com/NVlabs/sionna/blob/v1.0.1/README.md), which is recommended to follow in order to avoid dependency issues.
 
 ### Sionna-RT Installation
 
@@ -23,7 +23,7 @@ The code has been developed and tested with **Python 3.10** on **Ubuntu 22.04 LT
 > The source code of Sionna RT is located in a separate
 > [GitHub repository](https://github.com/NVlabs/sionna-rt).
 
-_Source: [Sionna-RT Official README](https://github.com/NVlabs/sionna/blob/9ca7cc75a6431a8d05c4059f3b137ba52a06ce5b/README.md)_
+_Source: [Sionna-RT Official README](https://github.com/NVlabs/sionna/blob/v1.0.1/README.md)_
 
 ### Setup Instructions
 
