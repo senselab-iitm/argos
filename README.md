@@ -11,44 +11,44 @@ This artefact demonstrates the anchor selection for a material-aware scalable di
 
 <h2>Installation and setup</h2>
 
-The code has been developed and tested with **Python 3.10** on **Ubuntu 22.04 LTS**; using the same setup is recommended for reproducibility. The current implementation is compatible **only with Sionna-RT v1.0.1** and is not expected to work with other versions. Installation instructions for Sionna-RT v1.0.1 are available in the [official documentation](https://github.com/NVlabs/sionna/blob/v1.0.1/README.md), which is recommended to follow in order to avoid dependency issues.
-
-### Sionna-RT Installation
-
-> Sionna RT has the same requirements as [Mitsuba 3](https://github.com/mitsuba-renderer/mitsuba3) and we refer to its
-> [installation guide](https://mitsuba.readthedocs.io/en/stable/) for further
-> information. To run Sionna RT on CPU, [LLVM](https://llvm.org) is required by
-> [Dr.Jit](https://drjit.readthedocs.io/en/stable/). Please check the
-> [installation instructions for the LLVM backend](https://drjit.readthedocs.io/en/latest/what.html#backends).
-> The source code of Sionna RT is located in a separate
-> [GitHub repository](https://github.com/NVlabs/sionna-rt).
-
-_Source: [Sionna-RT Official README](https://github.com/NVlabs/sionna/blob/v1.0.1/README.md)_
+The code has been developed and tested with **Python 3.10** on **Ubuntu 22.04 LTS**; using the same setup is recommended for reproducibility. The current implementation is compatible **only with Sionna-RT v1.0.1** and is not expected to work with other versions.
 
 ### Setup Instructions
 
-1. Inside the project root, create a virtual environment  
+1. Install python3.10, python3-venv and llvm (for running Sionna-RT in CPU)
+   ```bash
+   sudo apt install python3.10
+   sudo apt install python3-venv
+   sudo apt install llvm
+   ```
+2. Install git and clone the repository
+   ```bash
+   sudo apt install git
+   git clone https://github.com/senselab-iitm/argos.git
+   ```
+3. Change directory to project root
+   ```bash
+   cd argos
+   ```   
+4. Inside the project root, create a virtual environment  
    ```bash
    python3 -m venv .venv
    ```
-2. Enable this virtual environment<br>
-```bash
-source .venv/bin/activate
-```
+5. Enable this virtual environment<br>
+	```bash
+	source .venv/bin/activate
+	```
+6. In this virtual environment install necessary packages as specified in `requirements.txt`<br>
+	```bash
+	pip3 install -r requirements.txt
+	```
+7. Then make the virtual environment accessible to jupyter lab<br>
+	```bash
+	python -m ipykernel install --user --name=.venv
+	```
+8. From this virtual environment, start jupyter lab<br>
+	```bash
+	jupyter lab
+	```
 
-3. In this virtual environment install necessary packages as specified in `requirements.txt`<br>
-```bash
-pip3 install -r requirements.txt
-```
-
-5. Then make the virtual environment accessible to jupyter lab<br>
-```bash
-python -m ipykernel install --user --name=.venv
-```
-
-7. From this virtual environment, start jupyter lab<br>
-```bash
-jupyter lab
-```
-
-8. Select the .venv kernel in jupyter lab by clicking the `kernel->change kernel menu`
+8. Select the .venv kernel in jupyter lab by clicking the `kernel->change kernel menu`. If the `kernel` menu appears disabled/unclickable, open an ipynb notebook from the `app` directory
