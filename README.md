@@ -11,7 +11,7 @@ This artefact demonstrates the anchor selection for a material-aware scalable di
 
 <h2>Installation and setup</h2>
 
-The code has been developed and tested with **Python 3.10** on **Ubuntu 22.04 LTS**; using the same setup is recommended for reproducibility. The current implementation is compatible **only with Sionna-RT v1.0.1** and is not expected to work with other versions.
+The code supports **Python 3.10 - 3.12** and has been developed and tested with **Python 3.10** on **Ubuntu 22.04 LTS**; using the same setup is recommended for reproducibility. The current implementation is compatible **only with Sionna-RT v1.0.1** and is not expected to work with other versions.
 
 ### Setup Instructions
 
