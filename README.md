@@ -118,15 +118,15 @@ Benchmarks percentage of updates for the hardware Argos is executing on. Generat
 ```
 The list of materials can be any from the keys of the `ITU_MATERIALS_PROPERTIES` object in [this file](https://github.com/NVlabs/sionna-rt/blob/d0429340b2ee3848e48ed648db9a014dfba22cc8/src/sionna/rt/radio_materials/itu.py) from Sionna-RT. Individual object IDs can be discerned from the [`app/iter_objects.ipynb`](#iter_objectsipynb) notebook.
 
-### User Configurations
+## User Configurations
 Users are provided with configurations in the form of a configs.py file so that user-centric configurations are not tightly coupled with raw code.
 
-#### 1. cfg_mesh_directory
+### cfg_mesh_directory
 Default value: `"../data/visual_priors/factory/"` for getting the in-house segmented model of our factory testbed.
 
 This directory should contain two things: the mitsuba xml and the meshes, in a subfolder named `meshes`, which are to be imported into Sionna-RT. A `material_properties.json` file should also be provided. Please refer to [Preparing Your Own Scene](#preparing-your-own-scene) section for further details.
 
-#### 2. cfg_cir_path
+### cfg_cir_path
 Default value: `"../data/rf_priors/rx_samples.csv"` for getting the in-house collected CIRs from our factory testbed.
 
 This directory should contain the csv file of collected CIRs with the following essential columns (you can use the columns of the provided default csv file as template):
@@ -143,67 +143,67 @@ This directory should contain the csv file of collected CIRs with the following 
 
 * _I_0,Q_0,Amp_0_ ... _I_n,Q_n,Amp_n_: The I-Q values and the Amplitude of each taps
 
-#### 3. cfg_prior_map
+### cfg_prior_map
 Default value: `"../data/prior_map.npy"`
 
 If you know the prior probabilities of paths a robot will be following, which you have to localize, Argos can optimize the anchor placements according to that. You can create a 2D numpy array to indicate this prior map. The size of the prior map should be cfg_length*2 x cfg_breadth*2.
 
-#### 4. cfg_fmd_cache_name
+### cfg_fmd_cache_name
 Default value: `"../data/fmd_cache.json"`
 
 If you have an FMD cache beforehand, you can provide its path. Otherwise, you can generate the FMD cache by using the [`app/create_fmd_map`](#create_fmd_mapipynb) notebook.
 
-#### 5. cfg_scene_length 
+### cfg_scene_length 
 Default value: `14`
 
 The length of the scene, along y axis. This length should correspond to the length of the 3D model, as shown in Blender.
 
-#### 6. cfg_scene_breadth
+### cfg_scene_breadth
 Default value: `9`
 
 The breadth of the scene, along x axis. This length should correspond to the length of the 3D model, as shown in Blender.
 
-#### 7. cfg_tx_grid_length
+### cfg_tx_grid_length
 Default value: `4`
 
 For our example, we are treating the pre-deployed anchors to be in a grid. Number of anchors along the length of the scene is provided here.
 
-#### 8. cfg_tx_grid_breadth
+### cfg_tx_grid_breadth
 Default value: `3`
 
 For our example, we are treating the pre-deployed anchors to be in a grid. Number of anchors along the breadth of the scene is provided here.
 
-#### 9. cfg_bounding_box_name
+### cfg_bounding_box_name
 Default value: `"elm__28"`
 
 If the scene has a bounding box, the object ID of that. Object ID of the bounding box can be discerned from the [`app/iter_objects.ipynb`](#iter_objectsipynb) notebook.
 
-#### 10. cfg_set_bounding_box_transparent
+### cfg_set_bounding_box_transparent
 Default value: `True`
 
 If you do not wish to see the bounding box in the notebooks, so that other elements can be properly seen. Does not affect ray tracing results.
 
-#### 11. cfg_floor_name
+### cfg_floor_name
 Default value: `"elm__6"`
 
 If the scene has a floor, the object ID of that. Object ID of the floor can be discerned from the [`app/iter_objects.ipynb`](#iter_objectsipynb) notebook.
 
-#### 12. cfg_set_floor_transparent
+### cfg_set_floor_transparent
 Default value: `True`
 
 If you do not wish to see the floor in the notebooks, so that the FMD maps can be properly seen. Does not affect ray tracing results.
 
-#### 13. cfg_clip_at 
+### cfg_clip_at 
 Default value: `1`
 
 Position of a clipping plane which cuts through the scene and shows the objects below it. Useful for clipping ceiling of a bounding box. Does not affect ray tracing results.
 
-#### 14. cfg_clip_plane_orientation
+### cfg_clip_plane_orientation
 Default value: `(0,-1.9,0)`
 
 Orientation of the clipping plane which cuts through the scene and shows the objects below it. Useful for clipping ceiling of a bounding box. Does not affect ray tracing results.
 
-#### 15. cfg_color_dict 
+### cfg_color_dict 
 Default value: 	`{
     "metal":(0.60, 0.65, 0.70),
     "wood":(0.76, 0.60, 0.42),
