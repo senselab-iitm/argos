@@ -1,4 +1,4 @@
-<h1>Argos: Leveraging Visual Priors for Scalable Wireless Navigation in Dynamic Environments</h1>
+# Argos: Leveraging Visual Priors for Scalable Wireless Navigation in Dynamic Environments</h1>
 
 <p align="center">
   <a href="https://sense.cse.iitm.ac.in/argos/">[ WEBSITE ]</a> |
@@ -16,7 +16,7 @@ This artefact demonstrates the anchor selection for a material-aware scalable di
 	<li>apps: directory contains user-facing scripts for: (a)generating the ∆FMD cache given an RF-aware 3D model and prior UWB transmitter grid configurations, and (b)finding the optimal anchor subset given an anchor budget and the ∆FMD cache. It also contains helper scripts for the ease-of-use for the user.</li>
 </ol>
 
-<h2>Installation and setup</h2>
+## Installation and setup
 
 The code supports **Python 3.10 - 3.12** and has been developed and tested with **Python 3.10** on **Ubuntu 22.04 LTS**; using the same setup is recommended for reproducibility. The current implementation is compatible **only with Sionna-RT v1.0.1** and is not expected to work with other versions.
 
@@ -60,36 +60,35 @@ The code supports **Python 3.10 - 3.12** and has been developed and tested with 
 
 8. Select the .venv kernel in jupyter lab by clicking the `kernel->change kernel menu`. If the `kernel` menu appears disabled/unclickable, open an ipynb notebook from the `app` directory
 
-<h1>Application Specific Notebooks for Argos</h1>
+## Application Specific Notebooks for Argos
 The `app` folder has 4 tools in form of IPYTHON NOTEBOOKS to facilitate clear demonstration.
-<ol>
-<li>create_fmd_map.ipynb: provides a step-by-step method to initialize an ∆FMD cache<br>
-You can define the grid of anchors from which the selection is to be done.<br>
+
+### create_fmd_map.ipynb
+
+Provides a step-by-step method to initialize an ∆FMD cache<br>
+You can define the grid of anchors from which the selection is to be done.
 
 ![anchor_grid](readme_assets/anchor_grid.gif)
-<br>
+
 You can also view ∆FMD for each transmitter after it has been computed<br>
 
 ![fmd_map](readme_assets/single_anchor_fmd.gif)
-<br>
 
-</li><br>
+### select_anchors.ipynb
 
-<li>select_anchors.ipynb: helps the user to perform anchor selection given the ∆FMD cache. It takes in a prior trajectory probability map of mobile nodes and shows the anchors to be deployed in order to achieve superior quality localization given a budget.<br>
+Helps the user to perform anchor selection given the ∆FMD cache. It takes in a prior trajectory probability map of mobile nodes and shows the anchors to be deployed in order to achieve superior quality localization given a budget.
 
 ![fmd_map](readme_assets/anchors_selected.gif)
-<br>
 
-</li><br>
+### iter_objects.ipynb
 
-<li>iter_objects.ipynb: a utility which allows the user to iterate through the objects in the scene and view their identifiers for debugging purposes.
+A utility which allows the user to iterate through the objects in the scene and view their identifiers for debugging purposes.
 
 ![fmd_map](readme_assets/item_iter.gif)
-<br>
 
-</li><br>
+### benchmark_updates.ipynb
 
-<li>benchmark_updates.ipynb: benchmarks percentage of updates for the hardware Argos is executing on. Generates a benchmark.csv file in the app folder by updating FMD cache for single Tx with a certain percentage receivers. The meaning of different columns are as follows:
+Benchmarks percentage of updates for the hardware Argos is executing on. Generates a benchmark.csv file in the app folder by updating FMD cache for single Tx with a certain percentage receivers. The meaning of different columns are as follows:
 	<ol>
 		<li>receiver_selection: Time spent selecting receiver grid points based on the random bitmask.</li><br>
 		<li>scene_and_paths: Time spent loading the scene and computing propagation paths.</li><br>
@@ -103,11 +102,11 @@ You can also view ∆FMD for each transmitter after it has been computed<br>
 	</ol>
 </ol> 
 
-### Preparing Your Own Scene
+## Preparing Your Own Scene
 1. Create or import any 3D scene into Blender. We have created and exported our models using [Blender 3.6](https://www.blender.org/download/lts/3-6/).
 2. If you have multiple objects in the scene you can change its material by changing the material name in Blender, as well as other properties. Please refer to [this part of the mitsuba-blender wiki](https://github.com/mitsuba-renderer/mitsuba-blender/wiki/Exporting-a-Blender-scene) and [this tutorial on material properties](https://docs.blender.org/manual/nb/3.6/render/materials/index.html) for further details on Blender materials and which tweaks are applicable to Mitsuba.
 3. In order to use your own 3D model in Sionna-RT, it should be exported as a Mitsuba xml. Kindly refer to the [official mitsuba-blender addon wiki](https://github.com/mitsuba-renderer/mitsuba-blender/wiki) for further details. It is advised to create a fresh directory when exporting the model from Blender. After exporting, the .xml file and meshes folder will be available.
-4. For convenience we provide user configurations where this directory can be added. This directory should be passed in the `cfg_mesh_directory` configuration in `configs.py` file. Please see **User Configurations** section for more details.
+4. For convenience we provide user configurations where this directory can be added. This directory should be passed in the `cfg_mesh_directory` configuration in `configs.py` file. Please see [User Configurations](#user-configurations) section for more details.
 5. To tweak object materials independent of blender, we provide the option to add material properties to existing models. For this, another file to be added in this directory,  `material_properties.json`, which takes the following format:
 
 ```bash
@@ -117,7 +116,7 @@ You can also view ∆FMD for each transmitter after it has been computed<br>
 	...
 }
 ```
-The list of materials can be any from the keys of the ITU_MATERIALS_PROPERTIES object in [this file](https://github.com/NVlabs/sionna-rt/blob/d0429340b2ee3848e48ed648db9a014dfba22cc8/src/sionna/rt/radio_materials/itu.py) from Sionna-RT. Individual object IDs can be discerned from the `app/iter_objects.ipynb` notebook.
+The list of materials can be any from the keys of the ITU_MATERIALS_PROPERTIES object in [this file](https://github.com/NVlabs/sionna-rt/blob/d0429340b2ee3848e48ed648db9a014dfba22cc8/src/sionna/rt/radio_materials/itu.py) from Sionna-RT. Individual object IDs can be discerned from the [`app/iter_objects.ipynb`](#iter_objectsipynb) notebook.
 
 ### User Configurations
 Users are provided with configurations in the form of a configs.py file so that user-centric configurations are not tightly coupled with raw code.
@@ -125,7 +124,7 @@ Users are provided with configurations in the form of a configs.py file so that 
 #### 1. cfg_mesh_directory
 Default value: `"../data/visual_priors/factory/"` for getting the in-house segmented model of our factory testbed.
 
-This directory should contain two things: the mitsuba xml and the meshes, in a subfolder named `meshes`, which are to be imported into Sionna-RT. A `material_properties.json` file should also be provided. Please refer to **Preparing Your Own Scene** section for further details.
+This directory should contain two things: the mitsuba xml and the meshes, in a subfolder named `meshes`, which are to be imported into Sionna-RT. A `material_properties.json` file should also be provided. Please refer to [Preparing Your Own Scene](#preparing-your-own-scene) section for further details.
 
 #### 2. cfg_cir_path
 Default value: `"../data/rf_priors/rx_samples.csv"` for getting the in-house collected CIRs from our factory testbed.
@@ -152,7 +151,7 @@ If you know the prior probabilities of paths a robot will be following, which yo
 #### 4. cfg_fmd_cache_name
 Default value: `"../data/fmd_cache.json"`
 
-If you have an FMD cache beforehand, you can provide its path. Otherwise, you can generate the FMD cache by using the `app/create_fmd_map` notebook.
+If you have an FMD cache beforehand, you can provide its path. Otherwise, you can generate the FMD cache by using the [`app/create_fmd_map`](#create_fmd_mapipynb) notebook.
 
 #### 5. cfg_scene_length 
 Default value: `14`
@@ -177,7 +176,7 @@ For our example, we are treating the pre-deployed anchors to be in a grid. Numbe
 #### 9. cfg_bounding_box_name
 Default value: `"elm__28"`
 
-If the scene has a bounding box, the object ID of that. Object ID of the bounding box can be discerned from the `app/iter_objects.ipynb` notebook.
+If the scene has a bounding box, the object ID of that. Object ID of the bounding box can be discerned from the [`app/iter_objects.ipynb`](#iter_objectsipynb) notebook.
 
 #### 10. cfg_set_bounding_box_transparent
 Default value: `True`
@@ -187,7 +186,7 @@ If you do not wish to see the bounding box in the notebooks, so that other eleme
 #### 11. cfg_floor_name
 Default value: `"elm__6"`
 
-If the scene has a floor, the object ID of that. Object ID of the floor can be discerned from the `app/iter_objects.ipynb` notebook.
+If the scene has a floor, the object ID of that. Object ID of the floor can be discerned from the [`app/iter_objects.ipynb`](#iter_objectsipynb) notebook.
 
 #### 12. cfg_set_floor_transparent
 Default value: `True`
