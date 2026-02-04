@@ -1,5 +1,12 @@
 <h1>Argos: Leveraging Visual Priors for Scalable Wireless Navigation in Dynamic Environments</h1>
 
+<p align="center">
+  <a href="https://sense.cse.iitm.ac.in/argos/">[ WEBSITE ]</a> |
+  <a href="https://github.com/senselab-iitm/argos">[ CODE ]</a> |
+  <a href="https://sense.cse.iitm.ac.in/argos/assets/argos_tentative_copy.pdf">[ PAPER ]</a> |
+  <a href="https://www.youtube.com/watch?v=NNSm4e_TFxA">[ VIDEO ]</a>
+</p>
+
 ![banner](./readme_assets/artifact_workflow.png)
 
 This artefact demonstrates the anchor selection for a material-aware scalable digital twin of a factory. This repository provides a segmented digital twin of a factory, where users can define the prior path of a movable tag, and the number of anchors required to localize it throughout its journey. Our algorithm provides the optimal subset of anchors and the FMD (which affects the ranging error) map of the deployment. This repository has three folders:
@@ -96,5 +103,113 @@ You can also view ∆FMD for each transmitter after it has been computed<br>
 	</ol>
 </ol> 
 
+### Preparing Your Own Scene
+1. Create or import any 3D scene into Blender. We have created and exported our models using [Blender 3.6](https://www.blender.org/download/lts/3-6/).
+2. If you have multiple objects in the scene you can change its material by changing the material name in Blender, as well as other properties. Please refer to [this part of the mitsuba-blender wiki](https://github.com/mitsuba-renderer/mitsuba-blender/wiki/Exporting-a-Blender-scene) and [this tutorial on material properties](https://docs.blender.org/manual/nb/3.6/render/materials/index.html) for further details on Blender materials and which tweaks are applicable to Mitsuba.
+3. In order to use your own 3D model in Sionna-RT, it should be exported as a Mitsuba xml. Kindly refer to the [official mitsuba-blender addon wiki](https://github.com/mitsuba-renderer/mitsuba-blender/wiki) for further details. It is advised to create a fresh directory when exporting the model from Blender. After exporting, the .xml file and meshes folder will be available.
+4. For convenience we provide user configurations where this directory can be added. This directory should be passed in the `cfg_mesh_directory` configuration in `configs.py` file. Please see **User Configurations** section for more details.
+5. To tweak object materials independent of blender, we provide the option to add material properties to existing models. For this, another file to be added in this directory,  `material_properties.json`, which takes the following format:
+
+```bash
+{
+	"object_identifier 1":"material",
+	"object_identifier 2":"material",
+	...
+}
+```
+The list of materials can be any from the keys of the ITU_MATERIALS_PROPERTIES object in [this file](https://github.com/NVlabs/sionna-rt/blob/d0429340b2ee3848e48ed648db9a014dfba22cc8/src/sionna/rt/radio_materials/itu.py) from Sionna-RT. Individual object IDs can be discerned from the `app/iter_objects.ipynb` notebook.
+
 ### User Configurations
 Users are provided with configurations in the form of a configs.py file so that user-centric configurations are not tightly coupled with raw code.
+
+#### 1. cfg_mesh_directory
+Default value: `"../data/visual_priors/factory/"` for getting the in-house segmented model of our factory testbed.
+
+This directory should contain two things: the mitsuba xml and the meshes, in a subfolder named `meshes`, which are to be imported into Sionna-RT. A `material_properties.json` file should also be provided. Please refer to **Preparing Your Own Scene** section for further details.
+
+#### 2. cfg_cir_path
+Default value: `"../data/rf_priors/rx_samples.csv"` for getting the in-house collected CIRs from our factory testbed.
+
+This directory should contain the csv file of collected CIRs with the following essential columns (you can use the columns of the provided default csv file as template):
+
+* _Timestamp_: The UNIX timestamp
+
+* _x_position_: The x coordinate of the tag
+
+* _y_positions_: The y coordinate of the tag
+
+* _FP_Index_: The first path tap index
+
+* _RX_Power_dBm_: The Received Signal Strength (RSS) in dBm
+
+* _I_0,Q_0,Amp_0_ ... _I_n,Q_n,Amp_n_: The I-Q values and the Amplitude of each taps
+
+#### 3. cfg_prior_map
+Default value: `"../data/prior_map.npy"`
+
+If you know the prior probabilities of paths a robot will be following, which you have to localize, Argos can optimize the anchor placements according to that. You can create a 2D numpy array to indicate this prior map. The size of the prior map should be cfg_length*2 x cfg_breadth*2.
+
+#### 4. cfg_fmd_cache_name
+Default value: `"../data/fmd_cache.json"`
+
+If you have an FMD cache beforehand, you can provide its path. Otherwise, you can generate the FMD cache by using the `app/create_fmd_map` notebook.
+
+#### 5. cfg_scene_length 
+Default value: `14`
+
+The length of the scene, along y axis. This length should correspond to the length of the 3D model, as shown in Blender.
+
+#### 6. cfg_scene_breadth
+Default value: `9`
+
+The breadth of the scene, along x axis. This length should correspond to the length of the 3D model, as shown in Blender.
+
+#### 7. cfg_tx_grid_length
+Default value: `4`
+
+For our example, we are treating the pre-deployed anchors to be in a grid. Number of anchors along the length of the scene is provided here.
+
+#### 8. cfg_tx_grid_breadth
+Default value: `3`
+
+For our example, we are treating the pre-deployed anchors to be in a grid. Number of anchors along the breadth of the scene is provided here.
+
+#### 9. cfg_bounding_box_name
+Default value: `"elm__28"`
+
+If the scene has a bounding box, the object ID of that. Object ID of the bounding box can be discerned from the `app/iter_objects.ipynb` notebook.
+
+#### 10. cfg_set_bounding_box_transparent
+Default value: `True`
+
+If you do not wish to see the bounding box in the notebooks, so that other elements can be properly seen. Does not affect ray tracing results.
+
+#### 11. cfg_floor_name
+Default value: `"elm__6"`
+
+If the scene has a floor, the object ID of that. Object ID of the floor can be discerned from the `app/iter_objects.ipynb` notebook.
+
+#### 12. cfg_set_floor_transparent
+Default value: `True`
+
+If you do not wish to see the floor in the notebooks, so that the FMD maps can be properly seen. Does not affect ray tracing results.
+
+#### 13. cfg_clip_at 
+Default value: `1`
+
+Position of a clipping plane which cuts through the scene and shows the objects below it. Useful for clipping ceiling of a bounding box. Does not affect ray tracing results.
+
+#### 14. cfg_clip_plane_orientation
+Default value: `(0,-1.9,0)`
+
+Orientation of the clipping plane which cuts through the scene and shows the objects below it. Useful for clipping ceiling of a bounding box. Does not affect ray tracing results.
+
+#### 15. cfg_color_dict 
+Default value: 	`{
+    "metal":(0.60, 0.65, 0.70),
+    "wood":(0.76, 0.60, 0.42),
+    "marble":(0.98, 0.95, 0.75),
+    "concrete":(0.75, 0.75, 0.75)
+}`
+
+The individual colors of each material. Each tuple refers to R,G,B in the range 0-1.
