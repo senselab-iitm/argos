@@ -116,7 +116,7 @@ Benchmarks percentage of updates for the hardware Argos is executing on. Generat
 	...
 }
 ```
-The list of materials can be any from the keys of the ITU_MATERIALS_PROPERTIES object in [this file](https://github.com/NVlabs/sionna-rt/blob/d0429340b2ee3848e48ed648db9a014dfba22cc8/src/sionna/rt/radio_materials/itu.py) from Sionna-RT. Individual object IDs can be discerned from the [`app/iter_objects.ipynb`](#iter_objectsipynb) notebook.
+The list of materials can be any from the keys of the `ITU_MATERIALS_PROPERTIES` object in [this file](https://github.com/NVlabs/sionna-rt/blob/d0429340b2ee3848e48ed648db9a014dfba22cc8/src/sionna/rt/radio_materials/itu.py) from Sionna-RT. Individual object IDs can be discerned from the [`app/iter_objects.ipynb`](#iter_objectsipynb) notebook.
 
 ### User Configurations
 Users are provided with configurations in the form of a configs.py file so that user-centric configurations are not tightly coupled with raw code.
