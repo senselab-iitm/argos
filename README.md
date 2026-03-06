@@ -3,8 +3,8 @@
 <p align="center">
   <a href="https://sense.cse.iitm.ac.in/argos/">[ WEBSITE ]</a> |
   <a href="https://github.com/senselab-iitm/argos">[ CODE ]</a> |
-  <a href="https://sense.cse.iitm.ac.in/argos/assets/argos_tentative_copy.pdf">[ PAPER ]</a> |
-  <a href="https://www.youtube.com/watch?v=NNSm4e_TFxA">[ VIDEO ]</a>
+  <a href="https://sense.cse.iitm.ac.in/argos/assets/argos_percom2026.pdf">[ PAPER ]</a> |
+  <a href="https://www.youtube.com/watch?v=0j3sDkhoAXs">[ VIDEO ]</a>
 </p>
 
 ![banner](./readme_assets/artifact_workflow.png)
